@@ -7,7 +7,7 @@ import { User } from '../models/user';
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000';
+  private apiUrl = 'http://localhost:3000/api/auth'; // Fixed API URL
 
   constructor(private http: HttpClient) {}
 
