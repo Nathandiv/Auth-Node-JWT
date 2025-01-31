@@ -1,61 +1,45 @@
-<div class="flex justify-center items-center font-sans h-full min-h-screen p-4">
+<div class="flex justify-center items-center font-[sans-serif] h-full min-h-screen p-4">
   <div class="max-w-md w-full mx-auto">
-    <form (ngSubmit)="onSubmit()" class="bg-opacity-70 bg-white rounded-2xl p-6 shadow-lg">
+    <form (ngSubmit)="onSubmit()" class="bg-opacity-70 bg-white rounded-2xl p-6 shadow-[0_2px_16px_-3px_rgba(6,81,237,0.3)]">
       <div class="mb-12">
         <h3 class="text-gray-800 text-3xl font-extrabold">Register</h3>
       </div>
 
-      <div class="mb-6">
-        <input
-          type="text"
-          id="username"
-          [(ngModel)]="user.username"
-          name="username"
-          required
-          class="bg-transparent w-full text-sm text-gray-800 border-b border-gray-400 focus:border-gray-800 px-2 py-3 outline-none placeholder:text-gray-800"
-          placeholder="Enter username"
-        />
+      <div>
+        <div class="relative flex items-center">
+          <input type="text" id="username" [(ngModel)]="user.username" name="username" required
+            class="bg-transparent w-full text-sm text-gray-800 border-b border-gray-400 focus:border-gray-800 px-2 py-3 outline-none placeholder:text-gray-800"
+            placeholder="Enter username" />
+        </div>
       </div>
 
-      <div class="mb-6">
-        <input
-          type="email"
-          id="email"
-          [(ngModel)]="user.email"
-          name="email"
-          required
-          class="bg-transparent w-full text-sm text-gray-800 border-b border-gray-400 focus:border-gray-800 px-2 py-3 outline-none placeholder:text-gray-800"
-          placeholder="Enter email"
-        />
+      <div class="mt-6">
+        <div class="relative flex items-center">
+          <input type="email" id="email" [(ngModel)]="user.email" name="email" required
+            class="bg-transparent w-full text-sm text-gray-800 border-b border-gray-400 focus:border-gray-800 px-2 py-3 outline-none placeholder:text-gray-800"
+            placeholder="Enter email" />
+        </div>
       </div>
 
-      <div class="mb-6">
-        <input
-          type="password"
-          id="password"
-          [(ngModel)]="user.password"
-          name="password"
-          required
-          class="bg-transparent w-full text-sm text-gray-800 border-b border-gray-400 focus:border-gray-800 px-2 py-3 outline-none placeholder:text-gray-800"
-          placeholder="Enter password"
-        />
+      <div class="mt-6">
+        <div class="relative flex items-center">
+          <input type="password" id="password" [(ngModel)]="user.password" name="password" required
+            class="bg-transparent w-full text-sm text-gray-800 border-b border-gray-400 focus:border-gray-800 px-2 py-3 outline-none placeholder:text-gray-800"
+            placeholder="Enter password" />
+        </div>
       </div>
 
       <div class="mt-12">
-        <button
-          type="submit"
-          class="w-full py-2.5 px-4 text-sm font-semibold tracking-wider rounded-full text-white bg-gray-800 hover:bg-gray-700 focus:outline-none"
-        >
+        <button type="submit"
+          class="w-full py-2.5 px-4 text-sm font-semibold tracking-wider rounded-full text-white bg-gray-800 hover:bg-gray-700 focus:outline-none">
           Register
         </button>
       </div>
 
-      <p class="text-gray-800 text-sm text-center mt-6">
-        Already have an account?
+      <p class="text-gray-800 text-sm text-center mt-6">Already have an account?
         <a [routerLink]="['/login']" class="text-blue-600 font-semibold hover:underline">Login here</a>
       </p>
 
-      <!-- Display registration message -->
       <p *ngIf="message" class="text-center text-sm font-semibold mt-4" [ngClass]="{'text-green-600': message.includes('successful'), 'text-red-600': message.includes('failed')}">
         {{ message }}
       </p>
