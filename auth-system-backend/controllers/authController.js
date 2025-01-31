@@ -29,35 +29,32 @@ const register = async (req, res) => {
 
     res.status(201).json({ message: "User registered successfully" });
   } catch (error) {
+    console.error(error);  // Add logging for debugging
     res.status(500).json({ message: "Server error" });
   }
 };
+
 
 // User login function
+
 const login = async (req, res) => {
-  const { email, password } = req.body; // Extract email and password from the request body
+  const { email, password } = req.body;
   try {
-    // Check if a user with the provided email exists
-    const [user] = await db.execute("SELECT * FROM users WHERE email = ?", [
-      email,
-    ]);
+    const [user] = await db.execute('SELECT * FROM users WHERE email = ?', [email]);
     if (user.length === 0) {
-      return res.status(400).json({ message: "Invalid credentials" });
+      return res.status(400).json({ message: 'Invalid credentials' });
     }
 
-    // Compare the provided password with the stored hashed password
     const isMatch = await bcrypt.compare(password, user[0].password);
     if (!isMatch) {
-      return res.status(400).json({ message: "Invalid credentials" });
+      return res.status(400).json({ message: 'Invalid credentials' });
     }
 
-    // Create a JWT token containing the user's ID
-    const token = jwt.sign({ id: user[0].id }, JWT_SECRET, { expiresIn: "1h" });
-
+    const token = jwt.sign({ id: user[0].id }, JWT_SECRET, { expiresIn: '1h' });
     res.json({ token });
   } catch (error) {
-    res.status(500).json({ message: "Server error" });
+    console.error(error);
+    res.status(500).json({ message: 'Server error' });
   }
 };
-
 module.exports = { register, login };
