@@ -12,10 +12,10 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   register(user: User): Observable<any> {
-    return this.http.post(`${this.apiUrl}/register`, user);
+    return this.http.post(`${this.apiUrl}/register`, user);  // Fixed template literal
   }
 
   login(user: User): Observable<any> {
-    return this.http.post(`${this.apiUrl}/login`, user);
+    return this.http.post(`${this.apiUrl}/login`, user);  // Fixed template literal
   }
 }

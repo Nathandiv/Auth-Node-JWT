@@ -21,7 +21,7 @@ export class LoginComponent {
   onSubmit(): void {
     this.authService.login(this.user).subscribe(
       (response) => {
-        if (response.success) {
+        if (response.token) {  // Check for token instead of success
           this.message = 'Login successful!';
           this.router.navigate(['/dashboard']); // Redirect on success (adjust as needed)
         } else {
