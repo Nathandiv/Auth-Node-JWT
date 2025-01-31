@@ -19,7 +19,6 @@
             class="bg-transparent w-full text-sm text-gray-800 border-b border-gray-400 focus:border-gray-800 px-2 py-3 outline-none placeholder:text-gray-800"
             placeholder="Enter email"
           />
-          <!-- Email Icon -->
         </div>
       </div>
 
@@ -33,7 +32,6 @@
             class="bg-transparent w-full text-sm text-gray-800 border-b border-gray-400 focus:border-gray-800 px-2 py-3 outline-none placeholder:text-gray-800"
             placeholder="Enter password"
           />
-          <!-- Password Icon -->
         </div>
       </div>
 
@@ -70,19 +68,21 @@
         <p class="text-gray-800 text-sm text-center mt-6">
           Don't have an account?
           <a
-            [routerLink]="['/registerlogin']"
+            [routerLink]="['/register']"
             routerLinkActive="active"
             class="text-blue-600 font-semibold hover:underline ml-1 whitespace-nowrap"
-            >Register here</a
           >
+            Register here
+          </a>
         </p>
       </div>
 
       <hr class="my-6 border-gray-400" />
 
-      <div class="space-x-8 flex justify-center">
-        <!-- Social Media Buttons -->
+      <div *ngIf="message" class="text-red-600 text-sm text-center mt-4">
+        {{ message }}
       </div>
+
     </form>
   </div>
 </div>

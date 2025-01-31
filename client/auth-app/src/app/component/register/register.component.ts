@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router'; // ✅ Import RouterModule
 import { AuthService } from '../../services/auth.service';
 import { User } from '../../models/user';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule], // ✅ Add RouterModule
+  imports: [CommonModule, FormsModule,RouterModule], // Ensure FormsModule is imported
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
