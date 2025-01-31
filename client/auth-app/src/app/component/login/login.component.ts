@@ -19,16 +19,23 @@ export class LoginComponent {
   constructor(private authService: AuthService, private router: Router) {}
 
   onSubmit(): void {
-    this.authService.login(this.user).subscribe(
+    // Create a new object containing only email and password
+    const loginData = {
+      email: this.user.email,
+      password: this.user.password,
+    };
+
+    this.authService.login(loginData).subscribe(
       (response) => {
-        if (response.token) {  // Check for token instead of success
+        if (response.token) {  // Check for token in the response
           this.message = 'Login successful!';
-          this.router.navigate(['/dashboard']); // Redirect on success (adjust as needed)
+          this.router.navigate(['/dashboard']); // Redirect on success
         } else {
           this.message = 'User does not exist or incorrect details.';
         }
       },
       (error) => {
+        console.error(error); // Log the error for debugging
         this.message = 'User does not exist or incorrect details.';
       }
     );
