@@ -1,7 +1,6 @@
 {
   "name": "auth-system-backend",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -18,5 +17,7 @@
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.12.0"
-  }
+  },
+  "type": "commonjs",
+  "description": ""
 }

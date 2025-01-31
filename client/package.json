@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@angular/forms": "^19.1.4"
+  }
+}
