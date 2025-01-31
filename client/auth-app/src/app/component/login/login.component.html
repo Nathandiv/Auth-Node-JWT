@@ -14,7 +14,7 @@
             name="email"
             id="email"
             type="email"
-            [(ngModel)]="user.email"
+            [(ngModel)]="email"
             required
             class="bg-transparent w-full text-sm text-gray-800 border-b border-gray-400 focus:border-gray-800 px-2 py-3 outline-none placeholder:text-gray-800"
             placeholder="Enter email"
@@ -27,7 +27,8 @@
           <input
             type="password"
             id="password"
-            [(ngModel)]="user.password"
+            name="password"
+            [(ngModel)]="password"
             required
             class="bg-transparent w-full text-sm text-gray-800 border-b border-gray-400 focus:border-gray-800 px-2 py-3 outline-none placeholder:text-gray-800"
             placeholder="Enter password"

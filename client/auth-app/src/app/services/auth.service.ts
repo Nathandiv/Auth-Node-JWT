@@ -15,7 +15,7 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/register`, user);  // Fixed template literal
   }
 
-  login(user: User): Observable<any> {
-    return this.http.post(`${this.apiUrl}/login`, user);  // Fixed template literal
+  login(user: { email: string; password: string }): Observable<any> {
+    return this.http.post(`${this.apiUrl}/login`, user);
   }
 }
