@@ -14,24 +14,28 @@ import { RouterModule } from '@angular/router';
 })
 export class RegisterComponent {
   user: User = { username: '', email: '', password: '' };
-  message: string = '';
+  message: string = '';  // Add this property back to handle the message
 
   constructor(private authService: AuthService) {}
 
   onSubmit(registerForm: NgForm): void {
     if (registerForm.invalid) {
-      this.message = 'Please fill in all fields correctly.';
+      alert('Please fill in all fields correctly.');
       return;
     }
-  
+
     if (this.user.password.length < 6) {
-      this.message = 'Password must be at least 6 characters long.';
+      alert('Password must be at least 6 characters long.');
       return;
     }
-  
+
     this.authService.register(this.user).subscribe({
-      next: () => this.message = 'Registration successful!',
-      error: () => this.message = 'Registration failed. Please try again.'
+      next: () => {
+        this.message = 'Registration successful!';
+      },
+      error: () => {
+        this.message = 'Registration failed. Please try again.';
+      }
     });
   
     registerForm.reset(); // Reset form after successful submission
