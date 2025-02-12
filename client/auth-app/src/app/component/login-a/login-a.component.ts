@@ -16,25 +16,18 @@ export class LoginAComponent {
   password: string = '';
   message: string = '';
 
-  constructor(private authService: AdminService, private router: Router) {}
+  constructor(private adminService: AdminService, private router: Router) {}
 
   onSubmit(): void {
     const loginData = { email: this.email, password: this.password };
-    console.log(loginData);
-
-    this.authService.login(loginData).subscribe({
-      next: (response: any) => {
-        if (response.token) {
-          this.message = 'Login successful!';
-          this.router.navigate(['/dashboard']);
-        } else {
-          this.message = 'Invalid credentials.';
-        }
+    this.adminService.login(loginData).subscribe({
+      next: () => {
+        // Successful login is handled within the AdminService
       },
       error: (error) => {
         console.error(error);
         this.message = 'An error occurred. Please try again.';
-      }
+      },
     });
   }
 }

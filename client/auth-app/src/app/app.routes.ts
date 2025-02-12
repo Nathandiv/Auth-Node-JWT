@@ -7,7 +7,7 @@ import { LoginAComponent } from './component/login-a/login-a.component';
 export const routes: Routes = [
     { path: '', component: RegisterComponent},
     { path: 'login', component: LoginComponent },
-    { path: 'LoginA', component: LoginAComponent },
+    { path: 'loginA', component: LoginAComponent },
 
     { path: 'dashboard', component: DashboardComponent}
     
