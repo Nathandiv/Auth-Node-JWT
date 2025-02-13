@@ -33,7 +33,7 @@ export class LoginComponent {
       },
       error: (error) => {
         console.error(error);
-        this.message = 'An error occurred. Please try again.';
+        this.message = 'Incorrect username or password. Try again.';
       }
     });
   }
