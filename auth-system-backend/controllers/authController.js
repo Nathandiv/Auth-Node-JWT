@@ -41,6 +41,7 @@ const login = async (req, res) => {
   const { email, password } = req.body;
   try {
     const [user] = await db.execute('SELECT * FROM users WHERE email = ?', [email]);
+
     if (user.length === 0) {
       return res.status(400).json({ message: 'Invalid credentials' });
     }
@@ -50,11 +51,32 @@ const login = async (req, res) => {
       return res.status(400).json({ message: 'Invalid credentials' });
     }
 
-    const token = jwt.sign({ id: user[0].id }, JWT_SECRET, { expiresIn: '1h' });
+    // ✅ FIX: Include `is_admin` in JWT token
+    const token = jwt.sign(
+      { id: user[0].id, isAdmin: user[0].is_admin }, 
+      JWT_SECRET, 
+      { expiresIn: '1h' }
+    );
+
     res.json({ token });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Server error' });
   }
 };
-module.exports = { register, login };
+
+
+const updateUserAdminStatus = (email, isAdmin) => {
+  const query = 'UPDATE users SET is_admin = ? WHERE email = ?';
+
+  connection.execute(query, [isAdmin, email], (err, results) => {
+    if (err) {
+      console.error('Error updating user:', err);
+      return;
+    }
+    console.log(`User with email ${email} updated successfully.`);
+  });
+};
+
+
+module.exports = { register, login,updateUserAdminStatus };
